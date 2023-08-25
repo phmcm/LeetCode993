@@ -1,0 +1,39 @@
+**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     struct TreeNode *left;
+ *     struct TreeNode *right;
+ * };
+ */
+#include <stdbool.h>
+
+struct TreeNode {
+      int val;
+      struct TreeNode *left;
+      struct TreeNode *right;
+ };
+
+typedef Struct TreeNode TreeNode;
+
+int getNodeDepth(TreeNode* root, int valor, int pai, int depth) {
+    if(root == NULL)
+        return -1;
+    if(root->val == val)
+        return depth;
+
+    int leftDepth = getNodeDepth(root->left, val, root->val, depth +1);
+    int rightDepth = getNodeDepth(root->right, val, root->val, depth +1);
+
+    return (leftDepth != -1) ? leftDepth : rightDepth;
+}
+bool isCousins(struct TreeNode* root, int x, int y){
+    
+    int xDepth = getNodeDepth(root, x, -1, 0);
+    int yDepth = getNodeDepth(root, y, -1, 0);
+
+    if(xDepth != -1 && yDepth != -1 && xDepth == yDepth)
+        return true;
+
+    return false;
+}
